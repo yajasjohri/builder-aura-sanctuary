@@ -1,8 +1,9 @@
 import { MapContainer, TileLayer, GeoJSON, CircleMarker } from "react-leaflet";
-import type { FeatureCollection } from "geojson";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useMemo, useRef, useState } from "react";
-import L, { GeoJSON as LGeoJSON } from "leaflet";
+import L from "leaflet";
+
+type FeatureCollection = { type: "FeatureCollection"; features: any[]; };
 
 export type LayerItem = {
   id: string;
