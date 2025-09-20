@@ -1,7 +1,13 @@
-import { MapContainer, TileLayer, GeoJSON, CircleMarker } from "react-leaflet";
+import { MapContainer as RLMapContainer, TileLayer as RLTileLayer, GeoJSON as RLGeoJSON, CircleMarker as RLCircleMarker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useMemo, useRef, useState } from "react";
 import L from "leaflet";
+
+// Loosen typings for compatibility across react-leaflet versions
+const MapContainer: any = RLMapContainer;
+const TileLayer: any = RLTileLayer;
+const GeoJSON: any = RLGeoJSON;
+const CircleMarker: any = RLCircleMarker;
 
 type FeatureCollection = { type: "FeatureCollection"; features: any[]; };
 
