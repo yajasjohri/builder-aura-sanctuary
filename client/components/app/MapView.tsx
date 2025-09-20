@@ -31,13 +31,29 @@ const defaultCenter: [number, number] = [22.9734, 78.6569]; // India centroid-is
 export default function MapView({
   initialCenter = defaultCenter,
   height = 420,
+  layers: layersProp,
+  onLayersChange,
 }: {
   initialCenter?: [number, number];
   height?: number;
+  layers?: LayerItem[];
+  onLayersChange?: (layers: LayerItem[]) => void;
 }) {
   const mapRef = useRef<L.Map | null>(null);
-  const [layers, setLayers] = useState<LayerItem[]>([]);
+  const [internalLayers, setInternalLayers] = useState<LayerItem[]>(layersProp ?? []);
   const [selectedState, setSelectedState] = useState<string | null>(null);
+
+  // Sync internal state when used in controlled mode
+  useEffect(() => {
+    if (layersProp) setInternalLayers(layersProp);
+  }, [layersProp]);
+
+  const layers = layersProp ?? internalLayers;
+  const updateLayers = (next: LayerItem[] | ((prev: LayerItem[]) => LayerItem[])) => {
+    const resolved = typeof next === "function" ? (next as (p: LayerItem[]) => LayerItem[])(layers) : next;
+    onLayersChange?.(resolved);
+    if (!layersProp) setInternalLayers(resolved);
+  };
 
   const handleMapRef = (map: L.Map) => {
     mapRef.current = map;
@@ -63,7 +79,7 @@ export default function MapView({
     const text = await file.text();
     const json = JSON.parse(text) as FeatureCollection;
     const color = randomColor();
-    setLayers((prev) => [
+    updateLayers((prev) => [
       ...prev,
       {
         id: `${file.name}-${Date.now()}`,
@@ -125,7 +141,7 @@ export default function MapView({
                   {l.name}
                 </span>
                 <button
-                  onClick={() => setLayers((prev) => prev.filter((x) => x.id !== l.id))}
+                  onClick={() => updateLayers((prev) => prev.filter((x) => x.id !== l.id))}
                   className="rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-muted"
                 >
                   Remove
