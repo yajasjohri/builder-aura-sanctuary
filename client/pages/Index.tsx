@@ -20,8 +20,6 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-background">
-      <Header />
-
       <main>
         {/* Hero */}
         <section className="relative">
