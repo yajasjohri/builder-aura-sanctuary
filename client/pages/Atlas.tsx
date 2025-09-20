@@ -12,7 +12,6 @@ export default function Atlas() {
         </div>
         <MapView height={600} />
       </main>
-      <Footer />
     </div>
   );
 }
