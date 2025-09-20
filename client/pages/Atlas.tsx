@@ -3,7 +3,6 @@ import MapView from "@/components/app/MapView";
 export default function Atlas() {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       <main className="container py-8">
         <div className="mb-6">
           <h1 className="text-2xl font-bold tracking-tight">FRA Atlas</h1>
