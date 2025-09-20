@@ -1,4 +1,5 @@
-import Header from "@/components/app/Header\";\nimport Footer from \"@/components/app/Footer";
+import Header from "@/components/app/Header";
+import Footer from "@/components/app/Footer";
 import MapView from "@/components/app/MapView";
 
 export default function Atlas() {
