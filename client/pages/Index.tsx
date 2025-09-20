@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import Header from "@/components/app/Header";
-import Footer from "@/components/app/Footer";
 import MapView from "@/components/app/MapView";
 import { Link } from "react-router-dom";
 
