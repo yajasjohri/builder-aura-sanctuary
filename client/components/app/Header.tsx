@@ -17,32 +17,28 @@ export default function Header() {
         </Link>
 
         <nav className="flex items-center gap-1">
-          <NavLink
-            to="/"
-            className={({ isActive: active }) =>
-              cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                active || isActive("/")
-                  ? "bg-secondary text-secondary-foreground"
-                  : "text-foreground/80 hover:bg-muted hover:text-foreground",
-              )
-            }
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/atlas"
-            className={({ isActive: active }) =>
-              cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                active
-                  ? "bg-secondary text-secondary-foreground"
-                  : "text-foreground/80 hover:bg-muted hover:text-foreground",
-              )
-            }
-          >
-            Atlas
-          </NavLink>
+          {[
+            { to: "/", label: "Home" },
+            { to: "/dss", label: "DSS" },
+            { to: "/atlas", label: "FRA Atlas" },
+            { to: "/webgis", label: "WebGIS" },
+            { to: "/dashboard", label: "Dashboard" },
+          ].map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive: active }) =>
+                cn(
+                  "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  active || isActive(item.to)
+                    ? "bg-secondary text-secondary-foreground"
+                    : "text-foreground/80 hover:bg-muted hover:text-foreground",
+                )
+              }
+            >
+              {item.label}
+            </NavLink>
+          ))}
         </nav>
       </div>
     </header>
