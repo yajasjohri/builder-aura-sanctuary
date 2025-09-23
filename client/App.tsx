@@ -11,6 +11,11 @@ import Atlas from "./pages/Atlas";
 import NotFound from "./pages/NotFound";
 import Header from "@/components/app/Header";
 import Footer from "@/components/app/Footer";
+import { Suspense, lazy } from "react";
+
+const DSS = lazy(() => import("./pages/DSS"));
+const WebGIS = lazy(() => import("./pages/WebGIS"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
 
 const queryClient = new QueryClient();
 
@@ -23,12 +28,17 @@ const App = () => (
         <div className="flex min-h-screen flex-col bg-background">
           <Header />
           <div className="flex-1">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/atlas" element={<Atlas />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Loading…</div>}>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/dss" element={<DSS />} />
+                <Route path="/atlas" element={<Atlas />} />
+                <Route path="/webgis" element={<WebGIS />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
           </div>
           <Footer />
         </div>
