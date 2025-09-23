@@ -8,9 +8,12 @@ export default function DSS() {
   return (
     <div className="min-h-screen bg-background">
       <main className="container py-8">
-        <h1 className="text-2xl font-bold tracking-tight">Decision Support System</h1>
+        <h1 className="text-2xl font-bold tracking-tight">
+          Decision Support System
+        </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Upload one or two GeoJSON layers to run land use summaries and change detection with transparent Smart Rules.
+          Upload one or two GeoJSON layers to run land use summaries and change
+          detection with transparent Smart Rules.
         </p>
         <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-[1fr_360px]">
           <div className="rounded-xl border bg-card p-4 shadow-sm">
@@ -19,13 +22,18 @@ export default function DSS() {
               {layers.map((l) => (
                 <li key={l.id} className="flex items-center justify-between">
                   <span className="inline-flex items-center gap-2">
-                    <span className="h-3 w-3 rounded-sm" style={{ backgroundColor: l.color }} />
+                    <span
+                      className="h-3 w-3 rounded-sm"
+                      style={{ backgroundColor: l.color }}
+                    />
                     {l.name}
                   </span>
                 </li>
               ))}
               {layers.length === 0 && (
-                <li className="text-muted-foreground">No layers uploaded yet.</li>
+                <li className="text-muted-foreground">
+                  No layers uploaded yet.
+                </li>
               )}
             </ul>
           </div>

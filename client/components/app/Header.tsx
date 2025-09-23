@@ -11,8 +11,12 @@ export default function Header() {
         <Link to="/" className="group inline-flex items-center gap-2">
           <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-emerald-600 shadow-inner" />
           <div className="leading-tight">
-            <div className="text-sm font-semibold tracking-wide text-emerald-700 group-hover:text-emerald-800 dark:text-emerald-400">FRA Atlas</div>
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">AI WebGIS DSS</div>
+            <div className="text-sm font-semibold tracking-wide text-emerald-700 group-hover:text-emerald-800 dark:text-emerald-400">
+              FRA Atlas
+            </div>
+            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
+              AI WebGIS DSS
+            </div>
           </div>
         </Link>
 

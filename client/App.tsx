@@ -28,7 +28,13 @@ const App = () => (
         <div className="flex min-h-screen flex-col bg-background">
           <Header />
           <div className="flex-1">
-            <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Loading…</div>}>
+            <Suspense
+              fallback={
+                <div className="p-6 text-sm text-muted-foreground">
+                  Loading…
+                </div>
+              }
+            >
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/dss" element={<DSS />} />
